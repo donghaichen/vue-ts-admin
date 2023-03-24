@@ -3,7 +3,6 @@ import { createPinia } from "pinia";
 
 import App from "./App.vue";
 import router from "./router";
-import "./assets/main.css";
 import piniaPersist from "pinia-plugin-persist";
 const pinia = createPinia();
 pinia.use(piniaPersist);
@@ -12,6 +11,8 @@ pinia.use(piniaPersist);
 import "vfonts/Lato.css";
 // 等宽字体
 import "vfonts/FiraCode.css";
+
+import "virtual:windi.css";
 
 const app = createApp(App);
 app.use(pinia);

@@ -1,25 +1,27 @@
 <script lang="tsx">
+import { defineComponent, reactive, ref } from "vue";
+import { NFormItemRow, NInput, NButton } from "naive-ui";
 export default defineComponent({
-  name: 'PassWord',
+  name: "PassWord",
   props: {
     value: {
       type: [String],
-      default: '',
+      default: "",
     },
   },
-  emits: ['update:value'],
+  emits: ["update:value"],
   setup(props, { emit }) {
     return () => (
       <NFormItemRow path="password">
         <NInput
           type="password"
           value={props.value}
-          onInput={(ev) => emit('update:value', ev)}
+          onInput={(ev: any) => emit("update:value", ev)}
           show-password-on="click"
           placeholder="默认密码 Pass123456"
         />
       </NFormItemRow>
-    )
+    );
   },
-})
+});
 </script>

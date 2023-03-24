@@ -14,31 +14,31 @@
   </NForm>
 </template>
 <script setup lang="ts" name="UserNameLogin">
-import { userRules } from '../config'
-import { userNameLogin } from '../hooks/loginFn'
-import { IUserNameLogin } from '../type'
-import UserName from './userName.vue'
-import PassWord from './passWord.vue'
-import PictureCode from './pictureCode.vue'
-import { Fn } from '@vueuse/core'
+import { defineComponent, reactive, ref } from "vue";
+import { NFormItemRow, NInput, NButton } from "naive-ui";
+
+import type { IUserNameLogin } from "../type";
+import UserName from "./userName.vue";
+import PassWord from "./passWord.vue";
+
 const formValue: IUserNameLogin = reactive({
-  userName: 'Admin',
-  password: 'A123456',
-  picCode: '',
-  picId: '',
-})
-const { ElRef, loginValidate, loading } = userNameLogin(formValue)
+  userName: "Admin",
+  password: "A123456",
+  picCode: "",
+  picId: "",
+});
+// const { ElRef, loginValidate, loading } = userNameLogin(formValue);
 const subMit = (
   callback: (params: IUserNameLogin) => {},
-  err: Fn = () => {},
+  // err: Fn = () => {}
 ) => {
-  loginValidate(
-    () => (callback ? callback(formValue) : null),
-    () => err(),
-  )
-}
+  // loginValidate(
+  //   () => (callback ? callback(formValue) : null),
+  //   () => err()
+  // );
+};
 defineExpose({
   subMit,
-  loading,
-})
+  // loading,
+});
 </script>

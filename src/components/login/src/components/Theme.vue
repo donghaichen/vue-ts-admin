@@ -16,35 +16,37 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { themeStore } from '@/pinia/modules/theme'
-import { CSSProperties } from 'vue'
-const { theme } = storeToRefs(themeStore())
+import { defineComponent, reactive, ref } from "vue";
+import { NFormItemRow, NButton } from "naive-ui";
+import { themeStore } from "@/pinia/modules/theme";
+import { CSSProperties } from "vue";
+const { theme } = storeToRefs(themeStore());
 const railStyle = ({
   focused,
   checked,
 }: {
-  focused: boolean
-  checked: boolean
+  focused: boolean;
+  checked: boolean;
 }) => {
-  const style: CSSProperties = {}
+  const style: CSSProperties = {};
   if (checked) {
-    style.background = '#151515'
+    style.background = "#151515";
     if (focused) {
-      style.boxShadow = '0 0 0 2px #fff'
+      style.boxShadow = "0 0 0 2px #fff";
     }
   } else {
-    style.background = '#151515'
+    style.background = "#151515";
     if (focused) {
-      style.boxShadow = '0 0 0 2px #151515'
+      style.boxShadow = "0 0 0 2px #151515";
     }
   }
-  style.border = '1px solid #fff'
-  return style
-}
+  style.border = "1px solid #fff";
+  return style;
+};
 </script>
 
 <style lang="less" scoped>
-@prefixCls: ~'@{prefix}';
+@prefixCls: ~"@{prefix}";
 
 ::v-deep(.@{prefixCls}-switch__rail) {
   box-shadow: none !important;

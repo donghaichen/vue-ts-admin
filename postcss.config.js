@@ -1,23 +1,24 @@
 // module.exports = {
 //   plugins: [require('autoprefixer')],
 // }
+// eslint-disable-next-line no-undef
 module.exports = {
   plugins: {
     // 兼容浏览器，添加前缀
     autoprefixer: {
       overrideBrowserslist: [
-        'Android 4.1',
-        'iOS 7.1',
-        'Chrome > 31',
-        'Edge > 16',
-        'Firefox > 56',
-        'Ios_saf > 11',
-        'Opera > 48',
-        'Safari > 11',
-        'Samsung > 5',
-        'ff > 31',
-        'ie >= 8',
-        'last 10 versions', // 所有主流浏览器最近10版本用
+        "Android 4.1",
+        "iOS 7.1",
+        "Chrome > 31",
+        "Edge > 16",
+        "Firefox > 56",
+        "Ios_saf > 11",
+        "Opera > 48",
+        "Safari > 11",
+        "Samsung > 5",
+        "ff > 31",
+        "ie >= 8",
+        "last 10 versions", // 所有主流浏览器最近10版本用
       ],
       grid: true,
     },
@@ -31,4 +32,4 @@ module.exports = {
     //   minPixelValue: 12, //px小于12的不会被转换
     // },
   },
-}
+};

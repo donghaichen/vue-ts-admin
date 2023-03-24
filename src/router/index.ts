@@ -5,6 +5,10 @@ import { themeStore } from "@/pinia/modules/themeStore";
 import { nextTick } from "vue";
 import { useTitle } from "@vueuse/core";
 
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -20,12 +24,37 @@ const router = createRouter({
       component: () => import("@/views/Login.vue"),
     },
     {
-      path: "/dashboard",
-      name: "dashboard",
+      path: "/404",
+      name: "404",
       meta: {
-        title: "控制台",
+        title: "Page not found",
       },
-      component: () => import("@/views/Dashboard.vue"),
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import("@/views/error/404.vue"),
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      redirect: "/404",
+    },
+    {
+      path: "/",
+      name: "layout",
+      meta: {
+        title: "基本布局",
+      },
+      component: () => import("@/views/Layout.vue"),
+      children: [
+        {
+          path: "/dashboard",
+          name: "dashboard",
+          meta: {
+            title: "控制台",
+          },
+          component: () => import("@/views/Dashboard.vue"),
+        },
+      ],
     },
   ],
 });
@@ -36,7 +65,7 @@ router.beforeEach((to, from, next) => {
   const user = userStore();
 
   if (to.path !== "/login" && !user.token) {
-    const query = { redirectPath: to.path };
+    const query = { redirect: to.path };
     next({
       path: "/login",
       query: to.path === "/404" || !to.path ? {} : query,
@@ -62,7 +91,6 @@ router.beforeEach((to, from, next) => {
   }
 });
 router.afterEach(() => {
-  console.log("NProgressDone");
   NProgressDone();
 });
 export default router;

@@ -1,13 +1,8 @@
 <template>
-$END$
+  <main>
+    <div class="about">
+      <h1>404 NOT FOUND</h1>
+    </div>
+  </main>
 </template>
-
-<script>
-export default {
-name: "404"
-}
-</script>
-
-<style scoped>
-
-</style>
+<script setup lang="ts"></script>
